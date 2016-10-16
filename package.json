@@ -1,0 +1,17 @@
+{
+  "name": "salesforce-mocks",
+  "version": "1.0.0",
+  "description": "Mocks used to test libraries working with salesforce js libraries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin Vellacott",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "qunit": "^0.9.1"
+  },
+  "dependencies": {
+    "antlr4": "^4.5.3"
+  }
+}
