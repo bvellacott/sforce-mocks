@@ -1,4 +1,3 @@
-var mocks = require('./index');
 var Snapshot = mocks.Snapshot;
 var sforce = mocks.sforce;
 var SobjectQuery = mocks.SobjectQuery;
@@ -13,7 +12,7 @@ var SobjectGECond = mocks.SobjectGECond
 var SobjectInCond = mocks.SobjectInCond
 var QueryBuilderListener = mocks.QueryBuilderListener;
 
-var houseSchema = require('./schemas');
+console.log(mocks);
 
 test( 'new sforce.SObject()', function( t ) {
 	var so = new sforce.SObject('SomeObjectType');

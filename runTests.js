@@ -45,6 +45,7 @@ testrunner.setup(
 
 // one code and tests file 
 testrunner.run({
-    code: { path: "index.js" },
+    code: { path: "mocks.js", namespace: 'mocks' },
+    deps: { path: "schemas.js", namespace: 'houseSchema' },
     tests: "tests.js"
 }, function(){ console.log('done'); });

@@ -1,3 +1,5 @@
+var sforce = require('./mocks').sforce;
+
 var mockSchema = function(sfSchema, typeFilter, modelNameMap, emberMetas, selectParts, snapshots, formattedSObjects, payloads) {
 	this.sfSchema = sfSchema;
 	this.typeFilter = typeFilter;

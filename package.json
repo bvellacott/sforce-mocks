@@ -1,10 +1,11 @@
 {
-  "name": "salesforce-mocks",
+  "name": "sforce-mocks",
   "version": "1.0.0",
   "description": "Mocks used to test libraries working with salesforce js libraries",
+  "repository": "https://github.com/bvellacott/sforce-mocks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node runTests.js"
   },
   "author": "Benjamin Vellacott",
   "license": "Apache-2.0",
