@@ -24,7 +24,7 @@ var SelectLexer = require('./select/SelectLexer').SelectLexer;
 var SelectParser = require('./select/SelectParser').SelectParser;
 var SelectListener = require('./select/SelectListener').SelectListener;
 
-var extend = Object.assign;
+var _extend = Object.assign;
 
 // A mock of the ember Snapshot object 
 var Snapshot = function(instance) {
@@ -157,7 +157,7 @@ var sforce = {
 				var obj = objAry[i];
 				try {
 					sforce.db.validateSobject(obj);
-					obj = extend({}, obj);
+					obj = _extend({}, obj);
 					var objs = sforce.db.getSobjects(obj.type);
 					obj.Id = ((!sforce.db.useGivenIds || typeof obj.Id === 'undefined') ? sforce.db.newId() : obj.Id);
 					objs[obj.Id] = obj;
@@ -183,7 +183,7 @@ var sforce = {
 					continue;
 				}
 				try {
-					obj = extend({}, existingObj, obj);
+					obj = _extend({}, existingObj, obj);
 					sforce.db.validateSobject(obj);
 					sforce.db.getSobjects(obj.type)[Id] = obj;
 					result.push({success : 'true', id : obj.Id});
@@ -442,53 +442,47 @@ SobjectCondition.prototype = {
 
 // The equals condition object which extends the SobjectCondition object
 var SobjectEqCond = function(){};
-SobjectEqCond.prototype = extend(new SobjectCondition, {
-	// Runs an equals (===) check between the two terms
-	matches : function(obj) {
-		return this.getFirstValue(obj) === this.getSecondValue(obj);
-	},
-});
+SobjectEqCond.prototype = new SobjectCondition();
+// Runs an equals (===) check between the two terms
+SobjectEqCond.prototype.matches = function(obj) {
+	return this.getFirstValue(obj) === this.getSecondValue(obj);
+};
 
 var SobjectLTCond = function(){};
-SobjectLTCond.prototype = extend(new SobjectCondition, {
-	// Runs an less than (<) check between the two terms
-	matches : function(obj) {
-		return this.getFirstValue(obj) < this.getSecondValue(obj);
-	},
-});
+SobjectLTCond.prototype = new SobjectCondition();
+// Runs an less than (<) check between the two terms
+SobjectLTCond.prototype.matches = function(obj) {
+	return this.getFirstValue(obj) < this.getSecondValue(obj);
+};
 
 var SobjectLECond = function(){};
-SobjectLECond.prototype = extend(new SobjectCondition, {
-	// Runs an less than or equal (<=) check between the two terms
-	matches : function(obj) {
-		return this.getFirstValue(obj) <= this.getSecondValue(obj);
-	},
-});
+SobjectLECond.prototype = new SobjectCondition();
+// Runs an less than or equal (<=) check between the two terms
+SobjectLECond.prototype.matches = function(obj) {
+	return this.getFirstValue(obj) <= this.getSecondValue(obj);
+};
 
 var SobjectGTCond = function(){};
-SobjectGTCond.prototype = extend(new SobjectCondition, {
-	// Runs an greated than (>) check between the two terms
-	matches : function(obj) {
-		return this.getFirstValue(obj) > this.getSecondValue(obj);
-	},
-});
+SobjectGTCond.prototype = new SobjectCondition();
+// Runs an greated than (>) check between the two terms
+SobjectGTCond.prototype.matches = function(obj) {
+	return this.getFirstValue(obj) > this.getSecondValue(obj);
+};
 
 var SobjectGECond = function(){};
-SobjectGECond.prototype = extend(new SobjectCondition, {
+SobjectGECond.prototype = new SobjectCondition();
 	// Runs an greater than or equal (>=) check between the two terms
-	matches : function(obj) {
-		return this.getFirstValue(obj) >= this.getSecondValue(obj);
-	},
-});
+SobjectGECond.prototype.matches = function(obj) {
+	return this.getFirstValue(obj) >= this.getSecondValue(obj);
+};
 
 var SobjectInCond = function(){};
-SobjectInCond.prototype = extend(new SobjectCondition, {
-	// Runs an in (indexOf >= 0) check between the two terms where the second term
-	// must be a list of constants
-	matches : function(obj) {
-		return this.getSecondValue(obj).indexOf(this.getFirstValue(obj)) >= 0;
-	},
-});
+SobjectInCond.prototype = new SobjectCondition();
+// Runs an in (indexOf >= 0) check between the two terms where the second term
+// must be a list of constants
+SobjectInCond.prototype.matches = function(obj) {
+	return this.getSecondValue(obj).indexOf(this.getFirstValue(obj)) >= 0;
+};
 
 // The QueryBuilderListener parse tree listener used to walk the select parse tree
 // and build a SobjectQuery object
@@ -630,7 +624,8 @@ Store.prototype = {
 	},
 };
 
-module.exports = { 
+module.exports = {
+	Store: Store,
 	Snapshot: Snapshot, 
 	sforce: sforce, 
 	SobjectQuery: SobjectQuery, 

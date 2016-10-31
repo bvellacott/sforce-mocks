@@ -199,7 +199,7 @@
     <h1>Code coverage report for <span class="entity">sforce-mocks/mocks.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">87.57% <small>(303 / 346)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">87.78% <small>(309 / 352)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">81.31% <small>(87 / 107)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -208,7 +208,7 @@
         Functions: <span class="metric">86.75% <small>(72 / 83)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">88.34% <small>(303 / 343)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">88.54% <small>(309 / 349)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -857,12 +857,7 @@
 639
 640
 641
-642
-643
-644
-645
-646
-647</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+642</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1308,50 +1303,44 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">43</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">9</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">9</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">9</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">9</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">9</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1508,6 +1497,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">//Copyright (c) 2015 Benjamin Vellacott
 //
 //Permission is hereby granted, free of charge, to any person obtaining a copy of
@@ -1534,7 +1524,7 @@ var SelectLexer = require('./select/SelectLexer').SelectLexer;
 var SelectParser = require('./select/SelectParser').SelectParser;
 var SelectListener = require('./select/SelectListener').SelectListener;
 &nbsp;
-var extend = Object.assign;
+var _extend = Object.assign;
 &nbsp;
 // A mock of the ember Snapshot object 
 var Snapshot = <span class="fstat-no" title="function not covered" >function(instance) {</span>
@@ -1667,7 +1657,7 @@ var sforce = {
 				var obj = objAry[i];
 				try {
 					sforce.db.validateSobject(obj);
-					obj = extend({}, obj);
+					obj = _extend({}, obj);
 					var objs = sforce.db.getSobjects(obj.type);
 					obj.Id = ((!sforce.db.useGivenIds || typeof obj.Id === 'undefined') ? sforce.db.newId() : obj.Id);
 					objs[obj.Id] = obj;
@@ -1693,7 +1683,7 @@ var sforce = {
 <span class="cstat-no" title="statement not covered" >					continue;</span>
 				}
 				try {
-					obj = extend({}, existingObj, obj);
+					obj = _extend({}, existingObj, obj);
 					sforce.db.validateSobject(obj);
 					sforce.db.getSobjects(obj.type)[Id] = obj;
 					result.push({success : 'true', id : obj.Id});
@@ -1952,53 +1942,47 @@ SobjectCondition.prototype = {
 &nbsp;
 // The equals condition object which extends the SobjectCondition object
 var SobjectEqCond = function(){};
-SobjectEqCond.prototype = extend(new SobjectCondition, {
-	// Runs an equals (===) check between the two terms
-	matches : function(obj) {
-		return this.getFirstValue(obj) === this.getSecondValue(obj);
-	},
-});
+SobjectEqCond.prototype = new SobjectCondition();
+// Runs an equals (===) check between the two terms
+SobjectEqCond.prototype.matches = function(obj) {
+	return this.getFirstValue(obj) === this.getSecondValue(obj);
+};
 &nbsp;
 var SobjectLTCond = function(){};
-SobjectLTCond.prototype = extend(new SobjectCondition, {
-	// Runs an less than (&lt;) check between the two terms
-	matches : function(obj) {
-		return this.getFirstValue(obj) &lt; this.getSecondValue(obj);
-	},
-});
+SobjectLTCond.prototype = new SobjectCondition();
+// Runs an less than (&lt;) check between the two terms
+SobjectLTCond.prototype.matches = function(obj) {
+	return this.getFirstValue(obj) &lt; this.getSecondValue(obj);
+};
 &nbsp;
 var SobjectLECond = function(){};
-SobjectLECond.prototype = extend(new SobjectCondition, {
-	// Runs an less than or equal (&lt;=) check between the two terms
-	matches : function(obj) {
-		return this.getFirstValue(obj) &lt;= this.getSecondValue(obj);
-	},
-});
+SobjectLECond.prototype = new SobjectCondition();
+// Runs an less than or equal (&lt;=) check between the two terms
+SobjectLECond.prototype.matches = function(obj) {
+	return this.getFirstValue(obj) &lt;= this.getSecondValue(obj);
+};
 &nbsp;
 var SobjectGTCond = function(){};
-SobjectGTCond.prototype = extend(new SobjectCondition, {
-	// Runs an greated than (&gt;) check between the two terms
-	matches : function(obj) {
-		return this.getFirstValue(obj) &gt; this.getSecondValue(obj);
-	},
-});
+SobjectGTCond.prototype = new SobjectCondition();
+// Runs an greated than (&gt;) check between the two terms
+SobjectGTCond.prototype.matches = function(obj) {
+	return this.getFirstValue(obj) &gt; this.getSecondValue(obj);
+};
 &nbsp;
 var SobjectGECond = function(){};
-SobjectGECond.prototype = extend(new SobjectCondition, {
+SobjectGECond.prototype = new SobjectCondition();
 	// Runs an greater than or equal (&gt;=) check between the two terms
-	matches : function(obj) {
-		return this.getFirstValue(obj) &gt;= this.getSecondValue(obj);
-	},
-});
+SobjectGECond.prototype.matches = function(obj) {
+	return this.getFirstValue(obj) &gt;= this.getSecondValue(obj);
+};
 &nbsp;
 var SobjectInCond = function(){};
-SobjectInCond.prototype = extend(new SobjectCondition, {
-	// Runs an in (indexOf &gt;= 0) check between the two terms where the second term
-	// must be a list of constants
-	matches : function(obj) {
-		return this.getSecondValue(obj).indexOf(this.getFirstValue(obj)) &gt;= 0;
-	},
-});
+SobjectInCond.prototype = new SobjectCondition();
+// Runs an in (indexOf &gt;= 0) check between the two terms where the second term
+// must be a list of constants
+SobjectInCond.prototype.matches = function(obj) {
+	return this.getSecondValue(obj).indexOf(this.getFirstValue(obj)) &gt;= 0;
+};
 &nbsp;
 // The QueryBuilderListener parse tree listener used to walk the select parse tree
 // and build a SobjectQuery object
@@ -2140,7 +2124,8 @@ Store.prototype = {
 	},
 };
 &nbsp;
-module.exports = { 
+module.exports = {
+	Store: Store,
 	Snapshot: Snapshot, 
 	sforce: sforce, 
 	SobjectQuery: SobjectQuery, 
@@ -2159,7 +2144,7 @@ module.exports = {
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Oct 18 2016 00:34:02 GMT+0100 (BST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Oct 31 2016 00:38:51 GMT+0000 (GMT)</div>
 </div>
 
 <script src="../prettify.js"></script>
