@@ -1,0 +1,21 @@
+{
+  "name": "sforce-mocks",
+  "description": "Mocks used to test libraries working with salesforce js libraries",
+  "main": "index.js",
+  "authors": [
+    "Benjamin Vellacott"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "salesforce",
+    "mocks"
+  ],
+  "homepage": "https://github.com/bvellacott/sforce-mocks",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
